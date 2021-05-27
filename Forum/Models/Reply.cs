@@ -10,8 +10,8 @@ namespace Forum.Models
         public int ID { get; set;  }
         public string Message { get; set;  }
 
-        public int? AuthorID { get; set;  }
-        public Author Author { get; set;  }
+        public string? ApplicationUserID { get; set;  }
+        public ApplicationUser ApplicationUser { get; set;  }
 
         public int? PostID { get; set;  }
         public Post Post { get; set;  }
