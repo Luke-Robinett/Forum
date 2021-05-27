@@ -12,10 +12,10 @@ namespace Forum.Models
         public string Subject { get; set;  }
         public string Message { get; set;  }
 
-        public int AuthorID { get; set; }
+        public int? AuthorID { get; set; }
         public Author Author { get; set;  }
 
-        public int TopicID { get; set;  }
+        public int? TopicID { get; set;  }
         public Topic Topic { get; set;  }
 
         public List<Reply> Replies { get; set;  }

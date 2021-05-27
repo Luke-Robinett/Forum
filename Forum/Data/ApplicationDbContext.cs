@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Forum.Models;
 
 namespace Forum.Data
 {
@@ -12,5 +13,6 @@ namespace Forum.Data
             : base(options)
         {
         }
+        public DbSet<Forum.Models.Topic> Topic { get; set; }
     }
 }
