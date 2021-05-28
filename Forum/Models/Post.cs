@@ -12,7 +12,7 @@ namespace Forum.Models
         public string Subject { get; set;  }
         public string Message { get; set;  }
 
-        public string? ApplicationUserID { get; set; }
+        public string ApplicationUserID { get; set; }
         public ApplicationUser ApplicationUser { get; set;  }
 
         public int? TopicID { get; set;  }
