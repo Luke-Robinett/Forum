@@ -1,0 +1,30 @@
+﻿@page
+@model Forum.Pages.TopicsModel
+@{
+    ViewData["Title"] = "Topics";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+<form method="post">
+    <div class="form-group">
+        <label asp-for="NewTopic.Title">Add Topic</label> &nbsp;
+        <input asp-for="NewTopic.Title" /> &nbsp;
+        <input type="submit" value="Add" />
+    </div>
+</form>
+<ul class="list-group">
+    @if (Model.Topics.Count > 0)
+    {
+        foreach (var topic in Model.Topics)
+        {
+            <li class="list-group-item">
+                <a href="#" data-id="@topic.ID">@topic.Title</a>
+            </li>
+        }
+    }
+    else
+    {
+        <h3>Add a new topic to get started!</h3>
+    }
+</ul>

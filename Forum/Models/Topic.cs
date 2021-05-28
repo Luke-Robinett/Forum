@@ -11,6 +11,7 @@ namespace Forum.Models
         public int ID { get; set;  }
         [Required]
         [MaxLength(160)]
+        
         public string Title { get; set;  }
 
         public List<Post> Posts { get; set;  }
