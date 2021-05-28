@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +9,8 @@ namespace Forum.Models
     public class Reply
     {
         public int ID { get; set;  }
+        [Required]
+        [MaxLength(3000)]
         public string Message { get; set;  }
 
         public string ApplicationUserID { get; set;  }
