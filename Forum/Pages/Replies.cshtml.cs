@@ -13,38 +13,39 @@ using Microsoft.EntityFrameworkCore;
 namespace Forum.Pages
 {
     [Authorize]
-    public class PostsModel : PageModel
+    public class RepliesModel : PageModel
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public PostsModel(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public RepliesModel(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;
         }
 
         [BindProperty]
-        public Post NewPost { get; set; } = new Post();
+        public Reply NewReply { get; set; } = new Reply();
         [BindProperty]
-        public List<Post> Posts { get; set; } = new List<Post>();
+        public List<Reply> Replies { get; set; } = new List<Reply>();
 
-        public async Task<IActionResult> OnGetAsync(int topicID)
+        public async Task<IActionResult> OnGetAsync(int postID)
         {
-            var topic = await _context.Topic.FindAsync(topicID);
-            if (topic == null)
+            var post = await _context.Post.FindAsync(postID);
+            if (post== null)
             {
-                return NotFound("No matching topic.");
+                return NotFound("No matching post.");
             }
             var user = await _userManager.GetUserAsync(User);
 
-            NewPost.ApplicationUserID = user.Id;
-            NewPost.TopicID = topicID;
+            NewReply.ApplicationUserID = user.Id;
+            NewReply.PostID = postID;
+            NewReply.Post = post;
 
-            Posts = _context.Post
-                .Include(p => p.ApplicationUser)
-                .Include(p => p.Topic)
-                .Where(p => p.Topic.ID == topicID)
+            Replies = _context.Reply
+                .Include(r => r.ApplicationUser)
+                .Include(r => r.Post)
+                .Where(r => r.PostID== postID)
                 .ToList();
 
             return Page();
@@ -56,7 +57,7 @@ namespace Forum.Pages
             {
                 return Page();
             }
-            _context.Post.Add(NewPost);
+            _context.Reply.Add(NewReply);
             await _context.SaveChangesAsync();
 
             return RedirectToPage();

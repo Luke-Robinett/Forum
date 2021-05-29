@@ -20,6 +20,9 @@
         <p>
             @post.Message
         </p>
+        <p>
+            <a href=@($"/Replies/{post.ID}")>Reply</a>
+        </p>
     }
 }
 else
@@ -28,6 +31,9 @@ else
 }
 <h2>Add A Post</h2>
 <form method="post">
+    <input type="hidden" asp-for="NewPost.TopicID" />
+    <input type="hidden" asp-for="NewPost.ApplicationUserID" />
+
     <div asp-validation-summary="All"></div>
     <div class="form-group">
         <label asp-for="NewPost.Subject">Subject</label>
@@ -35,7 +41,7 @@ else
     </div>
     <div class="form-group">
         <label asp-for="NewPost.Message">Message</label>
-        <input asp-for="NewPost.Message" />
+        <textarea asp-for="NewPost.Message"></textarea>
     </div>
     <div class="form-group">
         <input type="submit" value="Add Post" />

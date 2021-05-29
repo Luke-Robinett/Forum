@@ -11,14 +11,4 @@ namespace Forum.Models
         public List<Post> Posts { get; set; }
         public List<Reply> Replies { get; set; }
     }
-
-    public class AppClaimsPrincipalFactory : UserClaimsPrincipalFactory<ApplicationUser, IdentityRole>
-    {
-        public AppClaimsPrincipalFactory(
-        UserManager<ApplicationUser> userManager
-        , RoleManager<IdentityRole> roleManager
-        , IOptions<IdentityOptions> optionsAccessor)
-        : base(userManager, roleManager, optionsAccessor)
-        { }
-    }
 }

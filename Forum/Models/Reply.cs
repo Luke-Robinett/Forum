@@ -12,6 +12,7 @@ namespace Forum.Models
         [Required]
         [MaxLength(3000)]
         public string Message { get; set;  }
+        public DateTime Date { get; set; } = DateTime.Now;
 
         public string ApplicationUserID { get; set;  }
         public ApplicationUser ApplicationUser { get; set;  }

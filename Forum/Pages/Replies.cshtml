@@ -1,0 +1,45 @@
+﻿@page "{postID:int}"
+@model Forum.Pages.RepliesModel
+@{
+    ViewData["Title"] = "Replies";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+@if (Model.Replies.Count > 0)
+{
+    foreach (var reply in Model.Replies)
+    {
+        <h4>RE: @reply.Post.Subject</h4>
+        <p>
+            @reply.ApplicationUser.UserName
+        </p>
+        <p>
+            @reply.Date.ToShortDateString()
+        </p>
+        <p>
+            @reply.Message
+        </p>
+    }
+}
+else
+{
+    <h3>Be the first one to reply to this post!</h3>
+}
+<h2>Add A Reply</h2>
+<form method="post">
+    <input type="hidden" asp-for="NewReply.ApplicationUserID" />
+    <input type="hidden" asp-for="NewReply.PostID" />
+
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <h5>RE: @Model.NewReply.Post.Subject</h5>
+    </div>
+    <div class="form-group">
+        <label asp-for="NewReply.Message">Message</label>
+        <textarea asp-for="NewReply.Message"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add Reply" />
+    </div>
+</form>
