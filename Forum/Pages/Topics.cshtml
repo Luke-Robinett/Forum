@@ -19,7 +19,7 @@
         foreach (var topic in Model.Topics)
         {
             <li class="list-group-item">
-                <a href="#" data-id="@topic.ID">@topic.Title</a>
+                <a href=@($"/Posts/{topic.ID}") >@topic.Title</a>
             </li>
         }
     }

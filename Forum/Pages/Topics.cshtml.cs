@@ -36,7 +36,7 @@ namespace Forum.Pages
                 return Page();
             }
 
-            _context.Topic.AddAsync(NewTopic);
+            _context.Topic.Add(NewTopic);
             await _context.SaveChangesAsync();
 
             return RedirectToPage();

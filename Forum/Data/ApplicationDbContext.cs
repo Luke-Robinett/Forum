@@ -13,6 +13,7 @@ namespace Forum.Data
             : base(options)
         {
         }
-        public DbSet<Forum.Models.Topic> Topic { get; set; }
+        public DbSet<Topic> Topic { get; set; }
+        public DbSet<Post> Post { get; set; }
     }
 }

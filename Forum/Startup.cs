@@ -37,6 +37,7 @@ namespace Forum
                 options.SignIn.RequireConfirmedAccount = true;
                 options.User.RequireUniqueEmail = true;
             })
+                .AddUserManager<UserManager<ApplicationUser>>()
                 //.AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
